@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaEnvelope, FaGithub, FaLinkedin, } from 'react-icons/fa'
 import About from './about/page'
 import Skills from './components/Skills'
 import Portfolio from './components/Portfolio'
@@ -96,7 +96,7 @@ export default function Home() {
           >
             {[{ icon: FaGithub, href: 'https://github.com/cristianManco' },
               { icon: FaLinkedin, href: 'https://www.linkedin.com/in/cristiandev18' },
-              { icon: FaTwitter, href: 'https://twitter.com/@Camilo224831245' }]
+              { icon: FaEnvelope, href: 'https://mail.google.com/mail/u/1/#inbox'},]
               .map((social, index) => (
                 <motion.a
                   key={index}

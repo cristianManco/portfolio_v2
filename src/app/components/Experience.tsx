@@ -6,74 +6,74 @@ import { FaLaptopCode, FaUniversity, FaBriefcase, FaGraduationCap, FaLaptop, FaC
 const experienceAndStudies = [
   {
     id: '1',
-    title: 'Software Developer',
-    icon: FaLaptopCode,
-    description: 'Worked as an intern developing web applications using JavaScript, HTML, and CSS. Collaborated with a team to build and maintain client websites.',
-    date: 'January 2022 - Present',
-    type: 'work', // Nueva propiedad para diferenciar tipo
+    title: 'Technical Analyst and Software Developer',
+    icon: FaUniversity,
+    description: 'Training at CENSA (Centro de Sistemas de Antioquia) with a focus on algorithms, data structures, and agile methodologies. Proficiency in languages such as JavaScript, Java, C#, HTML, and databases like MySQL and MongoDB.',
+    date: '2023 - 2024',
+    type: 'education',
   },
   {
     id: '2',
-    title: 'Technician in software analysis and development',
-    icon: FaUniversity,
-    description: 'Studied software development focusing on algorithms, data structures, and software development methodologies. Graduated with honors.',
-    date: '2023 - 2024',
-    type: 'education', // Nueva propiedad para diferenciar tipo
-  },
-  {
-    id: '3',
     title: 'Freelance Developer',
     icon: FaBriefcase,
-    description: 'Worked on various freelance projects, building websites and web applications for clients. Technologies used: HTML, CSS, JavaScript, React, Node.js, nestJS, SQL, MongoDB.',
+    description: 'Freelance experience in personalized projects, using technologies such as HTML, CSS, JavaScript, React, Node.js, NestJS, Next.js, SQL, and MongoDB.',
     date: 'April 2023',
     type: 'work',
   },
   {
-    id: '4',
-    title: 'Online Web Developer Udemy',
+    id: '3',
+    title: 'Web Developer',
     icon: FaLaptop,
-    description: 'Completed an intensive online bootcamp focusing on full-stack development. Learned front-end and back-end technologies such as React, Node.js, MongoDB, and Express.',
+    description: 'Intensive course on Udemy about complete web development, covering front-end technologies like HTML, CSS, JavaScript, and React.',
     date: '2023',
     type: 'education',
   },
   {
-    id: '5',
+    id: '4',
     title: 'Software Developer',
     icon: FaLaptopCode,
-    description: 'Software developer in BPO Global services. Built websites and web applications for clients. Front-end and back-end technologies such as React, Node.js, MongoDB, and Express.',
+    description: 'Development and maintenance of web applications at BPO Global Services, using front-end and back-end technologies such as Angular, Node.js, MySQL, SQL Server, CSS, Next.js, and Express.',
     date: '2024 - 2025',
     type: 'work',
   },
   {
-    id: '6',
+    id: '5',
     title: 'Full Stack Developer',
     icon: FaLaptopCode,
-    description: 'Full Stack developer in Riwi.io contract for training. Built websites and web applications for clients. Front-end and back-end technologies such as React, Node.js, MongoDB, and Express.',
+    description: 'Learning contract at Riwi.io, a software development company, developing web applications and custom software with NestJS, TypeScript, Node.js, MongoDB, SQL, Next.js, React, HTML, CSS. Also participated in the integration of external APIs and platforms like Firebase Auth and Moodle. Additionally, improved my skills in English, leadership, and human competencies.',
+    date: '2023 - 2024',
+    type: 'work',
+  },
+  {
+    id: '6',
+    title: 'Python Testing',
+    icon: FaLaptopCode,
+    description: 'Course at CENSA (Centro de Sistemas de Antioquia) on Python and unit testing using unittest, Selenium, and Faker for testing forms and web applications.',
     date: '2024 - 2025',
     type: 'work',
   },
   {
     id: '7',
-    title: 'Testing with Python',
-    icon: FaLaptopCode,
-    description: 'Worked on testing using Python to automate tasks and improve application performance.',
-    date: '2024 - 2025',
-    type: 'work',
-  },
-  {
-    id: '8',
-    title: 'Methodologies and Skills',
+    title: 'Methodologies and Competencies',
     icon: FaGraduationCap,
-    description: 'Courses on YouTube focusing on modern development methodologies and skills.',
+    description: 'Courses on YouTube about agile methodologies like Scrum and project management tools like Jira, Confluence, and ClickUp, focused on leadership and managing high-performance teams.',
     date: '2024 - 2025',
     type: 'education',
   },
   {
-    id: '9',
-    title: 'Git, GitHub',
+    id: '8',
+    title: 'Git and GitHub',
     icon: FaCode,
-    description: 'Learning and applying version control using Git and GitHub for various projects.',
-    date: '2024 - 2025',
+    description: 'Proficiency in version control with Git and GitHub, including Git Flow and branching strategies in web and custom software projects.',
+    date: '2023 - 2024',
+    type: 'education',
+  },
+  {
+    id: '9',
+    title: 'Learning Plan 2025',
+    icon: FaGraduationCap,
+    description: 'For the year 2025, I plan to continue learning and strengthening my technical and soft skills, focusing on new technologies and agile methodologies.',
+    date: '2025 - 2026',
     type: 'education',
   },
 ]
@@ -97,7 +97,7 @@ export default function ExperienceAndEducation() {
           {experienceAndStudies.map((item) => (
             <motion.div
               key={item.id}
-              className={`bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 relative flex flex-col justify-between`}
+              className={`bg-gradient-to-r from-gray-900 via-gray-900 to-slate-900 p-6 rounded-lg shadow-lg hover:shadow-2xl relative flex flex-col justify-between`}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -114,7 +114,7 @@ export default function ExperienceAndEducation() {
               </div>
               <p className="text-gray-300 mb-4 flex-grow">{item.description}</p>
 
-              {/* Agregar espacio  entre la descripción y la fecha/etiqueta */}
+              {/* Agregar espacio entre la descripción y la fecha/etiqueta */}
               <div className="mt-auto flex justify-between items-center w-full">
                 <span className={`text-sm text-gray-400`}>{item.date}</span>
                 <span

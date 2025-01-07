@@ -34,7 +34,7 @@ const professionalSkills = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-slate-950">
+    <section id="skills" className="py-24 bg-slate-950">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-4xl font-bold text-center"
@@ -47,6 +47,7 @@ export default function Skills() {
           </span>
           
         </motion.h2>
+        <br />
         <div className="grid md:grid-cols-2 gap-12">
           {/* Technical Skills */}
           <div>

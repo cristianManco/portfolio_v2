@@ -5,15 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaDatabase, FaNodeJs,} from 'react-icons/fa'
-import { SiNestjs, SiPostgresql, SiMongodb, SiTypescript,SiMysql, } from 'react-icons/si'
+import { SiNestjs, SiMongodb, SiTypescript,SiMysql,SiTailwindcss,SiNextdotjs, SiPostgresql } from 'react-icons/si'
 
 const projects = [
   { 
     id: '1', 
-    name: 'API', 
-    image: '/img/image copy 7.png', 
-    tech: [<SiTypescript size={20} color="#3178C6" key="typescript" />, <SiNestjs size={20} color="#E0234E" key="nestjs" />, <SiPostgresql size={20} color="blueviolet" key="postgresql" />],
-    description: 'A robust API built with NestJS and PostgreSQL.',
+    name: 'Personal Portfolio', 
+    image: '/img/hola.png', 
+    tech: [<SiTypescript size={20} color="#3178C6" key="typescript" />, <SiNextdotjs size={20} color="#E0234E" key="nestjs" />, <SiTailwindcss size={20} color="blueviolet" key="postgresql" />],
+    description: 'Creation of a custom portfolio using technologies such as Typescript Nextjs and Tailwindcss.',
     websiteUrl: 'https://github.com/cristianManco?tab=repositories'
   },
   { 
@@ -83,8 +83,17 @@ const projects = [
   { 
     name: 'APIS BACKEND', 
     image: '/img/images1.jpeg', 
-    tech: [<SiMongodb size={20} color="#47A248" key="mongodb" />, <FaDatabase size={20} color="#F0DB4F" key="mysql" />, <SiNestjs size={20} color="#E0234E" key="nestjs" />, <SiTypescript size={20} color="#3178C6" key="typescript" />,
+    tech: [<SiMongodb size={20} color="#47A248" key="mongodb" />, <SiPostgresql size={20} color="blueviolet" key="mysql" />, <SiNestjs size={20} color="#E0234E" key="nestjs" />, <SiTypescript size={20} color="#3178C6" key="typescript" />,
       <SiMysql size={20} color="#61DAFB" key="react" />, <FaNodeJs size={20} color="green" key="node" />],
+    description: 'A collection of backend APIs using various technologies.',
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+  },
+  { 
+    name: 'Project In Development', 
+    image: '/img/develoment.png', 
+    tech: [<SiNextdotjs size={20} color="#61DAFB" key="react" />,<SiTypescript size={20} color="#3178C6" key="typescript" />,<SiTailwindcss size={20} color="blueviolet" key="mysql" />, <SiMongodb size={20} color="#47A248" key="mongodb" />, <SiNestjs size={20} color="#E0234E" key="nestjs" />, 
+
+    ],
     description: 'A collection of backend APIs using various technologies.',
     websiteUrl: 'https://github.com/cristianManco?tab=repositories'
   },
