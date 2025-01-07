@@ -2,13 +2,13 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { FaFacebookF, FaTwitter, FaSkype, FaLinkedinIn, FaEnvelope, FaWhatsapp } from 'react-icons/fa'
+import { FaLinkedinIn, FaEnvelope, FaWhatsapp, FaGithub } from 'react-icons/fa'
 
 export default function Footer() {
   const socialLinks = [
-    { icon: FaFacebookF, href: 'https://www.facebook.com/camilocorrea', label: 'Facebook' },
-    { icon: FaTwitter, href: 'https://twitter.com/@Camilo224831245', label: 'Twitter' },
-    { icon: FaSkype, href: 'https://secure.skype.com/', label: 'Skype' },
+    // { icon: FaTwitter, href: 'https://twitter.com/@Camilo224831245', label: 'Twitter' },
+    { icon: FaGithub, href: 'https://github.com/cristianManco', label: 'GitHub' },
+    // { icon: FaSkype, href: 'https://secure.skype.com/', label: 'Skype' },
     { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/cristiandev18', label: 'LinkedIn' },
     { icon: FaEnvelope, href: 'https://mail.google.com/mail/u/1/#inbox', label: 'Email' },
     { icon: FaWhatsapp, href: 'https://wa.me/3148497467', label: 'WhatsApp' },

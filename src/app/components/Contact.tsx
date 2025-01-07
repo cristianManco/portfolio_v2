@@ -106,7 +106,7 @@ export default function Contact() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <section id="contact" className="py-20 bg-slate-950">
+      <section id="contact" className="py-32 bg-slate-950">
         <Toaster position="top-center" reverseOrder={false} />
         <div className="container mx-auto px-4">
           <motion.h2 
@@ -191,7 +191,7 @@ export default function Contact() {
                     whileHover={{ scale: 1.05, color: '#a78bfa' }}
                   >
                     <i className="fas fa-map-marker-alt mr-2 text-purple-400"></i>
-                    Cl. 16 #55-129, Guayabal, Medellín, Antioquia
+                    CR 65C #38A SUR-44, San Antonio de Prado, Medellín, Antioquia
                   </motion.li>
                   <motion.li 
                     className="flex items-center text-gray-300"
