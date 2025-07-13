@@ -1,0 +1,26 @@
+{
+    "name": "Cristian Manco | Full Stack Developer",
+    "short_name": "Cristian Manco",
+    "description": "Portafolio profesional de Cristian Manco, desarrollador full stack especializado en React, Node.js y tecnologías modernas.",
+    "lang": "es",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#0f172a",
+    "theme_color": "#8b5cf6",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

@@ -1,107 +1,205 @@
-'use client'
+"use client"
+import { motion } from "framer-motion"
+import Image from "next/image"
+import {
+  FaDownload,
+} from "react-icons/fa"
+import ExperienceAndEducation from "./components/Experience"
+import { interests, personalData } from "./components/interests"
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { FaGamepad, FaHeadphones, FaPlane, FaCode, FaHiking, FaBook, FaCar, FaFilm } from 'react-icons/fa'
-import ExperienceAndEducation from '../components/Experience'
-
-const interests = [
-  { name: 'GAMES', icon: FaGamepad },
-  { name: 'MUSIC', icon: FaHeadphones },
-  { name: 'TRAVEL', icon: FaPlane },
-  { name: 'DEVELOPMENT', icon: FaCode },
-  { name: 'SPORTS', icon: FaHiking },
-  { name: 'BOOKS', icon: FaBook },
-  { name: 'CARS', icon: FaCar },
-  { name: 'MOVIES', icon: FaFilm },
-]
-
-export default function About() {
+export default function AboutPage() {
   return (
-    <section className="py-28 bg-slate-950">
-      <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-4xl font-bold text-center mb-12"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            About Me
-          </span>
-        </motion.h2>
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contenedor de la descripción y la imagen */}
+    <div className="min-h-screen bg-slate-950 pt-10">
+      {/* Hero Section */}
+      <section className="py-16 relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="relative mb-6">
-              {/* Imagen de la persona */}
-              <Image
-                width={200}
-                height={200}
-                src="/img/codigo.jpg"
-                alt="Cristian"
-                objectFit='cover'
-                className="w-full md:w-72 h-auto rounded-full mx-auto border-4 border-purple-500"
-              />
-            </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Hello, I`m Cristian, a passionate software developer with a love for problem-solving and creating innovative solutions. My journey in the world of technology started from a young age, and since then, I have acquired skills in a variety of programming languages and technologies.
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600">
+                About Me
+              </span>
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Passionate developer crafting digital experiences with code and creativity
             </p>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              I strongly believe in continuous learning and adaptability in this constantly evolving field. My goal is to use my technical and creative skills to develop software that makes a meaningful impact and improves people`s lives.
-            </p>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              I`m always looking for new opportunities to grow and challenges to overcome. I hope to have the opportunity to work with you and create something amazing together!
-            </p>
-            <motion.a
-              href="/img/CV_Cristian.pdf"
-              download
-              className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Download CV <i className="fas fa-download ml-2"></i>
-            </motion.a>
           </motion.div>
 
-          {/* Contenedor de datos personales e intereses */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h3 className="text-2xl font-semibold text-pink-600 mb-6">Personal Data</h3>
-            <ul className="space-y-4 text-gray-300">
-              <li><strong className="text-purple-400">Birthday:</strong> 4-10-2005</li>
-              <li><strong className="text-purple-400">Phone:</strong> 313-525-86-60</li>
-              <li><strong className="text-purple-400">Email:</strong> riwiaprender@gmail.com</li>
-              {/* <li><strong className="text-purple-400">Website:</strong> https://www.linkedin.com/in/cristiandev18</li> */}
-              <li><strong className="text-purple-400">Address:</strong> CR 65 San Antonio prado, Medellin</li>
-              <li><strong className="text-purple-400">Position:</strong> Software Developer And Study</li>
-            </ul>
-            <h3 className="text-2xl font-semibold text-pink-600 mt-12 mb-6">Interests</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {interests.map((interest, index) => (
-                <motion.div 
-                  key={index} 
-                  className="flex flex-col items-center justify-center bg-gray-800 p-4 rounded-lg hover:bg-slate-700  transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Profile Section */}
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Profile Image */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
+                <div className="relative bg-gradient-to-r from-purple-600 to-pink-600 p-1 rounded-full">
+                  <Image
+                    width={300}
+                    height={300}
+                    src="/img/codigo.jpg"
+                    alt="Cristian"
+                    className="w-80 h-80 object-cover rounded-full bg-slate-900"
+                  />
+                </div>
+                {/* Floating Elements */}
+                <motion.div
+                  className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500 rounded-full"
+                  animate={{ y: [-10, 10, -10] }}
+                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                />
+                <motion.div
+                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-pink-500 rounded-full"
+                  animate={{ y: [10, -10, 10] }}
+                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: 1 }}
+                />
+              </div>
+
+              {/* Description */}
+              <div className="space-y-6">
+                <motion.p
+                  className="text-gray-300 text-lg leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  <interest.icon className="text-3xl text-blue-500 mb-2" />
-                  <span className="text-gray-400 text-sm">{interest.name}</span>
+                  Hello, I&apos;m <span className="text-purple-400 font-semibold">Cristian</span>, a passionate software
+                  developer with a love for problem-solving and creating innovative solutions. My journey in the world
+                  of technology started from a young age, and since then, I have acquired skills in a variety of
+                  programming languages and technologies.
+                </motion.p>
+
+                <motion.p
+                  className="text-gray-300 text-lg leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  I strongly believe in <span className="text-pink-400 font-semibold">continuous learning</span> and
+                  adaptability in this constantly evolving field. My goal is to use my technical and creative skills to
+                  develop software that makes a meaningful impact and improves people&apos;s lives.
+                </motion.p>
+
+                <motion.p
+                  className="text-gray-300 text-lg leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                >
+                  I&apos;m always looking for new opportunities to grow and challenges to overcome. I hope to have the
+                  opportunity to work with you and create something{" "}
+                  <span className="text-purple-400 font-semibold">amazing</span> together!
+                </motion.p>
+
+                {/* Download CV Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1 }}
+                >
+                  <motion.a
+                    href="/img/HV-CRISTIAN MANCO.pdf"
+                    download
+                    className="group inline-flex items-center space-x-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <FaDownload className="group-hover:animate-bounce" />
+                    <span>Download CV</span>
+                  </motion.a>
                 </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Personal Data & Interests */}
+            <motion.div
+              className="space-y-12"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {/* Personal Data */}
+              <div className="bg-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-800/50">
+                <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400 mb-8">
+                  Personal Data
+                </h3>
+                <div className="space-y-6">
+                  {personalData.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-center space-x-4 group"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.6 }}
+                    >
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <item.icon className="text-white text-lg" />
+                      </div>
+                      <div>
+                        <p className="text-purple-400 font-semibold text-sm uppercase tracking-wide">{item.label}</p>
+                        <p className="text-gray-300 text-lg">{item.value}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Interests */}
+              <div className="bg-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-800/50">
+                <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400 mb-8">
+                  Interests
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {interests.map((interest, index) => (
+                    <motion.div
+                      key={index}
+                      className="group relative overflow-hidden bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.8 }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                    >
+                      {/* Background Gradient */}
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br ${interest.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                      />
+
+                      <div className="relative flex flex-col items-center text-center space-y-3">
+                        <div
+                          className={`w-12 h-12 bg-gradient-to-r ${interest.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                        >
+                          <interest.icon className="text-white text-xl" />
+                        </div>
+                        <span className="text-gray-300 font-medium text-sm group-hover:text-white transition-colors duration-300">
+                          {interest.name}
+                        </span>
+                      </div>
+
+                      {/* Hover Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </div>
-      {/* Contenedor de experiencia y educación */}
-      <ExperienceAndEducation/>
-    </section>
+      </section>
+
+      {/* Experience & Education Section */}
+      <ExperienceAndEducation />
+    </div>
   )
 }
