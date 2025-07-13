@@ -1,177 +1,466 @@
 'use client'
+import { useState } from "react"
+import React from "react"
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaDatabase, FaNodeJs,} from 'react-icons/fa'
-import { SiNestjs, SiMongodb, SiTypescript,SiMysql,SiTailwindcss,SiNextdotjs, SiPostgresql } from 'react-icons/si'
+import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
+import Link from "next/link"
+import {
+  FaExternalLinkAlt,
+  FaGithub,
+  FaReact,
+  FaNodeJs,
+  FaVuejs,
+  FaDatabase,
+  FaMobile,
+  FaDesktop,
+  FaFilter,
+
+} from "react-icons/fa"
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiMongodb, SiPostgresql, } from "react-icons/si"
 
 const projects = [
-  { 
-    id: '1', 
-    name: 'Personal Portfolio', 
-    image: '/img/hola.png', 
-    tech: [<SiTypescript size={20} color="#3178C6" key="typescript" />, <SiNextdotjs size={20} color="#E0234E" key="nestjs" />, <SiTailwindcss size={20} color="blueviolet" key="postgresql" />],
-    description: 'Creation of a custom portfolio using technologies such as Typescript Nextjs and Tailwindcss.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+  {
+    id: '1',
+    name: 'Personal Portfolio',
+    image: '/img/hola.png',
+    tech: ['TypeScript', 'Next.js', 'TailwindCSS'],
+    description: 'Creation of a custom portfolio using technologies such as Typescript, Nextjs and Tailwindcss.',
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    liveUrl: 'https://cristian-portfolio.com',
+    category: 'Frontend',
+    status: 'Completed',
+    featured: false,
+    year: '2024',
   },
-  { 
-    id: '2', 
-    name: 'Digital clock', 
-    image: '/img/image copy 8.png', 
-    tech: [<FaHtml5 size={20} color="#E44D26" key="html5" />, <FaCss3Alt size={20} color="#1572B6" key="css3" />, <FaJsSquare size={20} color="#F7DF1E" key="javascript" />],
+  {
+    id: '2',
+    name: 'Digital clock',
+    image: '/img/image copy 8.png',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     description: 'A sleek digital clock implementation using vanilla JavaScript.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Frontend',
+    status: 'Completed',
+    featured: false,
+    year: '2023',
   },
-  { 
-    name: 'Shopping cart', 
-    image: '/img/image copy.png', 
-    tech: [<FaHtml5 size={20} color="#E44D26" key="html5" />, <FaCss3Alt size={20} color="#1572B6" key="css3" />, <FaJsSquare size={20} color="#F7DF1E" key="javascript" />],
+  {
+    id: '3',
+    name: 'Shopping cart',
+    image: '/img/image copy.png',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     description: 'An interactive shopping cart with dynamic updates.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Frontend',
+    status: 'Completed',
+    featured: false,
+    year: '2023',
   },
-  { 
-    name: 'Coders Finder', 
-    image: '/img/image2.png', 
-    tech: [<FaHtml5 size={20} color="#E44D26" key="html5" />, <FaCss3Alt size={20} color="#1572B6" key="css3" />, <FaJsSquare size={20} color="#F7DF1E" key="javascript" />],
+  {
+    id: '4',
+    name: 'Coders Finder',
+    image: '/img/image2.png',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     description: 'A platform to connect with and find skilled coders.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Frontend',
+    status: 'Completed',
+    featured: false,
+    year: '2023',
   },
-  { 
-    name: 'Metalifeverse', 
-    image: '/img/image copy 6.png', 
-    tech: [<FaHtml5 size={20} color="#E44D26" key="html5" />, <FaCss3Alt size={20} color="#1572B6" key="css3" />, <FaJsSquare size={20} color="#F7DF1E" key="javascript" />],
+  {
+    id: '5',
+    name: 'Metalifeverse',
+    image: '/img/image copy 6.png',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     description: 'An immersive metaverse experience for digital life.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Frontend',
+    status: 'Completed',
+    featured: false,
+    year: '2023',
   },
-  { 
-    name: 'Login', 
-    image: '/img/image copy 5.png', 
-    tech: [<FaHtml5 size={20} color="#E44D26" key="html5" />, <FaCss3Alt size={20} color="#1572B6" key="css3" />, <FaJsSquare size={20} color="#F7DF1E" key="javascript" />],
+  {
+    id: '6',
+    name: 'Login',
+    image: '/img/image copy 5.png',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     description: 'A secure and user-friendly login interface.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Frontend',
+    status: 'Completed',
+    featured: false,
+    year: '2023',
   },
-  { 
-    name: 'WEB Cafeteria', 
-    image: '/img/Captura de pantalla 2024-08-30 214412.png', 
-    tech: [<FaHtml5 size={20} color="#E44D26" key="html5" />, <FaCss3Alt size={20} color="#1572B6" key="css3" />, <FaJsSquare size={20} color="#F7DF1E" key="javascript" />, <SiNestjs size={20} color="#E0234E" key="nestjs" />],
+  {
+    id: '7',
+    name: 'WEB Cafeteria',
+    image: '/img/Captura de pantalla 2024-08-30 214412.png',
+    tech: ['HTML', 'CSS', 'JavaScript', 'NestJS'],
     description: 'A full-stack web application for a cafeteria management system.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Full Stack',
+    status: 'Completed',
+    featured: false,
+    year: '2024',
   },
-  { 
-    name: 'cine Colombia Plantilla', 
-    image: '/img/image copy 3.png', 
-    tech: [<FaHtml5 size={20} color="#E44D26" key="html5" />, <FaCss3Alt size={20} color="#1572B6" key="css3" />, <FaJsSquare size={20} color="#F7DF1E" key="javascript" />],
+  {
+    id: '8',
+    name: 'cine Colombia Plantilla',
+    image: '/img/image copy 3.png',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     description: 'A template for a cinema website inspired by Cine Colombia.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Frontend',
+    status: 'Completed',
+    featured: false,
+    year: '2023',
   },
-  { 
-    name: 'API REST', 
-    image: '/img/image copy 2.png', 
-    tech: [<SiNestjs size={20} color="#E0234E" key="nestjs" />, <SiMongodb size={20} color="#47A248" key="mongodb" />, <SiTypescript size={20} color="#3178C6" key="typescript" />],
+  {
+    id: '9',
+    name: 'API REST',
+    image: '/img/image copy 2.png',
+    tech: ['NestJS', 'MongoDB', 'TypeScript'],
     description: 'A RESTful API built with NestJS, MongoDB, and TypeScript.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Backend',
+    status: 'Completed',
+    featured: false,
+    year: '2024',
   },
-  { 
-    name: 'DATABASE', 
-    image: '/img/fondo.jpg', 
-    tech: [<SiMongodb size={20} color="#47A248" key="mongodb" />, <FaDatabase size={20} color="#F0DB4F" key="mysql" />, <FaJsSquare size={20} color="#F7DF1E" key="javascript" />, <FaHtml5 size={20} color="#E44D26" key="html5" />],
+  {
+    id: '10',
+    name: 'DATABASE',
+    image: '/img/fondo.jpg',
+    tech: ['MongoDB', 'MySQL', 'JavaScript', 'HTML'],
     description: 'A comprehensive database solution using MongoDB and MySQL.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Backend',
+    status: 'Completed',
+    featured: false,
+    year: '2024',
   },
-  { 
-    name: 'APIS BACKEND', 
-    image: '/img/images1.jpeg', 
-    tech: [<SiMongodb size={20} color="#47A248" key="mongodb" />, <SiPostgresql size={20} color="blueviolet" key="mysql" />, <SiNestjs size={20} color="#E0234E" key="nestjs" />, <SiTypescript size={20} color="#3178C6" key="typescript" />,
-      <SiMysql size={20} color="#61DAFB" key="react" />, <FaNodeJs size={20} color="green" key="node" />],
+  {
+    id: '11',
+    name: 'APIS BACKEND',
+    image: '/img/images1.jpeg',
+    tech: ['MongoDB', 'PostgreSQL', 'NestJS', 'TypeScript', 'MySQL', 'Node.js'],
     description: 'A collection of backend APIs using various technologies.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Backend',
+    status: 'Completed',
+    featured: false,
+    year: '2024',
   },
-  { 
-    name: 'Project In Development', 
-    image: '/img/develoment.png', 
-    tech: [<SiNextdotjs size={20} color="#61DAFB" key="react" />,<SiTypescript size={20} color="#3178C6" key="typescript" />,<SiTailwindcss size={20} color="blueviolet" key="mysql" />, <SiMongodb size={20} color="#47A248" key="mongodb" />, <SiNestjs size={20} color="#E0234E" key="nestjs" />, 
+  {
+    id: '12',
+    name: 'Project In Development',
+    image: '/img/develoment.png',
+    tech: ['Next.js', 'TypeScript', 'TailwindCSS', 'MongoDB', 'NestJS'],
+    description: 'A collection of backend APIs using various technologies.',
+    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
+    category: 'Full Stack',
+    status: 'In Progress',
+    featured: true,
+    year: '2025',
+  },
+  {
+    id: '13',
+    name: 'E-Commerce Platform',
+    image: '/placeholder.svg?height=300&width=400',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe'],
+    description: 'A full-stack e-commerce solution with user authentication, payment integration, and admin dashboard.',
+    websiteUrl: 'https://github.com/cristianManco',
+    liveUrl: 'https://demo-ecommerce.com',
+    category: 'Full Stack',
+    status: 'Completed',
+    featured: true,
+    year: '2024',
+  },
+  {
+    id: '14',
+    name: 'Task Management App',
+    image: '/placeholder.svg?height=300&width=400',
+    tech: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
+    description: 'A collaborative task management app with real-time updates and team features.',
+    websiteUrl: 'https://github.com/cristianManco',
+    liveUrl: 'https://task-manager-demo.com',
+    category: 'Frontend',
+    status: 'Completed',
+    featured: false,
+    year: '2023',
+  },
+  {
+    id: '15',
+    name: 'Social Media API',
+    image: '/placeholder.svg?height=300&width=400',
+    tech: ['NestJS', 'PostgreSQL', 'JWT', 'WebSocket'],
+    description: 'RESTful API for a social media platform with messaging and auth.',
+    websiteUrl: 'https://github.com/cristianManco',
+    liveUrl: 'https://api-docs-demo.com',
+    category: 'Backend',
+    status: 'Completed',
+    featured: false,
+    year: '2024',
+  },
+  {
+    id: '16',
+    name: 'Mobile Banking App',
+    image: '/placeholder.svg?height=300&width=400',
+    tech: ['React Native', 'Node.js', 'MongoDB'],
+    description: 'Cross-platform banking app with biometrics and transactions.',
+    websiteUrl: 'https://github.com/cristianManco',
+    liveUrl: 'https://banking-app-demo.com',
+    category: 'Mobile',
+    status: 'In Progress',
+    featured: true,
+    year: '2024',
+  },
+];
 
-    ],
-    description: 'A collection of backend APIs using various technologies.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories'
-  },
-]
+
+const categories = ["All", "Frontend", "Backend", "Full Stack", "Mobile"]
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const techIcons: { [key: string]: any } = {
+  "Next.js": SiNextdotjs,
+  React: FaReact,
+  "Vue.js": FaVuejs,
+  "Node.js": FaNodeJs,
+  NestJS: SiNextdotjs,
+  TypeScript: SiTypescript,
+  "Tailwind CSS": SiTailwindcss,
+  MongoDB: SiMongodb,
+  PostgreSQL: SiPostgresql,
+}
 
 export default function Portfolio() {
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  console.log(hoveredProject);
+
+  const filteredProjects = projects.filter(
+    (project) => selectedCategory === "All" || project.category === selectedCategory,
+  )
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case "Frontend":
+        return FaDesktop
+      case "Backend":
+        return FaDatabase
+      case "Mobile":
+        return FaMobile
+      default:
+        return FaDesktop
+    }
+  }
 
   return (
-    <section id="portfolio" className="py-20 bg-slate-950">
-      <br />
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-4xl font-bold text-center mb-12"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            PORTFOLIO
-          </span>
-        </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <motion.div
-              key={project.name}
-              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-              onHoverStart={() => setHoveredProject(project.name)}
-              onHoverEnd={() => setHoveredProject(null)}
-            >
-              <div className="relative h-48">
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  layout="fill"
-                  objectFit="cover"
-                  sizes=''
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-xl font-semibold text-white mb-2">{project.name}</h3>
-                <AnimatePresence>
-                  {hoveredProject === project.name && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-gray-300 mb-4"
-                    >
-                      {project.description}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                <ul className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, techIndex) => (
-                    <li key={techIndex} className="border-2 border-slate-600 text-xs font-semibold px-2 py-1 rounded">
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={project.websiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                >
-                  See code <i className="fas fa-external-link-alt ml-1"></i>
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+    <div className="min-h-screen bg-slate-950 pt-20">
+      {/* Hero Section */}
+      <section className="py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600">
+                My Portfolio
+              </span>
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              A collection of projects showcasing my skills and passion for development
+            </p>
+          </motion.div>
+
+          {/* Category Filter */}
+          <motion.div
+            className="flex flex-wrap justify-center gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {categories.map((category, index) => (
+              <motion.button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`group relative px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${selectedCategory === category
+                    ? "text-white bg-gradient-to-r from-purple-600 to-pink-600 shadow-lg shadow-purple-500/25"
+                    : "text-gray-400 bg-gray-800/50 hover:text-white hover:bg-gray-700/50"
+                  }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+              >
+                <div className="flex items-center space-x-2">
+                  <FaFilter className="text-sm" />
+                  <span>{category}</span>
+                </div>
+                {selectedCategory === category && (
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl opacity-20"
+                    layoutId="activeCategory"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.2 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                )}
+              </motion.button>
+            ))}
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Projects Grid */}
+      <section className="pb-24">
+        <div className="container mx-auto px-4">
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" layout>
+            <AnimatePresence>
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  className="group relative"
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  onHoverStart={() => setHoveredProject(Number(project.id))}
+                  onHoverEnd={() => setHoveredProject(null)}
+                >
+                  {/* Featured Badge */}
+                  {project.featured && (
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="bg-gradient-to-r from-yellow-500 to-orange-500 text-black text-xs font-bold px-3 py-1 rounded-full">
+                        Featured
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Status Badge */}
+                  <div className="absolute top-4 right-4 z-20">
+                    <span
+                      className={`text-xs font-semibold px-3 py-1 rounded-full ${project.status === "Completed"
+                          ? "bg-green-500/20 text-green-400 border border-green-500/30"
+                          : "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                        }`}
+                    >
+                      {project.status}
+                    </span>
+                  </div>
+
+                  <motion.div
+                    className="bg-gray-900/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-gray-800/50 hover:border-purple-500/50 transition-all duration-500"
+                    whileHover={{ y: -10 }}
+                  >
+                    {/* Project Image */}
+                    <div className="relative h-64 overflow-hidden">
+                      <Image
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60" />
+
+                      {/* Overlay on Hover */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                      >
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <div className="flex space-x-3">
+                            <Link
+                              href={project.websiteUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 bg-gray-900/80 backdrop-blur-sm text-white px-4 py-2 rounded-xl hover:bg-gray-800/80 transition-colors duration-300"
+                            >
+                              <FaGithub className="text-sm" />
+                              <span className="text-sm font-medium">Code</span>
+                            </Link>
+                            <Link
+                              href={project.liveUrl || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 bg-purple-600/80 backdrop-blur-sm text-white px-4 py-2 rounded-xl hover:bg-purple-700/80 transition-colors duration-300"
+                            >
+                              <FaExternalLinkAlt className="text-sm" />
+                              <span className="text-sm font-medium">Live</span>
+                            </Link>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Project Content */}
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
+                          {project.name}
+                        </h3>
+                        <div className="flex items-center space-x-2 text-gray-400">
+                          {React.createElement(getCategoryIcon(project.category), { className: "text-sm" })}
+                          <span className="text-sm">{project.year}</span>
+                        </div>
+                      </div>
+
+                      <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">{project.description}</p>
+
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tech.map((tech, techIndex) => (
+                          <div
+                            key={techIndex}
+                            className="flex items-center space-x-1 bg-gray-800/50 text-gray-300 text-xs px-3 py-1 rounded-full border border-gray-700/50"
+                          >
+                            {techIcons[tech] && React.createElement(techIcons[tech], { className: "text-xs" })}
+                            <span>{tech}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Category Badge */}
+                      <div className="flex items-center space-x-2">
+                        <span className="bg-purple-500/20 text-purple-400 text-xs font-semibold px-3 py-1 rounded-full border border-purple-500/30">
+                          {project.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Hover Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+                  </motion.div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Empty State */}
+          {filteredProjects.length === 0 && (
+            <motion.div
+              className="text-center py-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="text-gray-400 text-lg">No projects found in this category.</div>
+            </motion.div>
+          )}
+        </div>
+      </section>
+    </div>
   )
 }
