@@ -18,206 +18,7 @@ import {
 
 } from "react-icons/fa"
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiMongodb, SiPostgresql, } from "react-icons/si"
-
-const projects = [
-  {
-    id: '1',
-    name: 'Personal Portfolio',
-    image: '/img/hola.png',
-    tech: ['TypeScript', 'Next.js', 'TailwindCSS'],
-    description: 'Creation of a custom portfolio using technologies such as Typescript, Nextjs and Tailwindcss.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    liveUrl: 'https://cristian-portfolio.com',
-    category: 'Frontend',
-    status: 'Completed',
-    featured: false,
-    year: '2024',
-  },
-  {
-    id: '2',
-    name: 'Digital clock',
-    image: '/img/image copy 8.png',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    description: 'A sleek digital clock implementation using vanilla JavaScript.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Frontend',
-    status: 'Completed',
-    featured: false,
-    year: '2023',
-  },
-  {
-    id: '3',
-    name: 'Shopping cart',
-    image: '/img/image copy.png',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    description: 'An interactive shopping cart with dynamic updates.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Frontend',
-    status: 'Completed',
-    featured: false,
-    year: '2023',
-  },
-  {
-    id: '4',
-    name: 'Coders Finder',
-    image: '/img/image2.png',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    description: 'A platform to connect with and find skilled coders.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Frontend',
-    status: 'Completed',
-    featured: false,
-    year: '2023',
-  },
-  {
-    id: '5',
-    name: 'Metalifeverse',
-    image: '/img/image copy 6.png',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    description: 'An immersive metaverse experience for digital life.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Frontend',
-    status: 'Completed',
-    featured: false,
-    year: '2023',
-  },
-  {
-    id: '6',
-    name: 'Login',
-    image: '/img/image copy 5.png',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    description: 'A secure and user-friendly login interface.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Frontend',
-    status: 'Completed',
-    featured: false,
-    year: '2023',
-  },
-  {
-    id: '7',
-    name: 'WEB Cafeteria',
-    image: '/img/Captura de pantalla 2024-08-30 214412.png',
-    tech: ['HTML', 'CSS', 'JavaScript', 'NestJS'],
-    description: 'A full-stack web application for a cafeteria management system.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Full Stack',
-    status: 'Completed',
-    featured: false,
-    year: '2024',
-  },
-  {
-    id: '8',
-    name: 'cine Colombia Plantilla',
-    image: '/img/image copy 3.png',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    description: 'A template for a cinema website inspired by Cine Colombia.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Frontend',
-    status: 'Completed',
-    featured: false,
-    year: '2023',
-  },
-  {
-    id: '9',
-    name: 'API REST',
-    image: '/img/image copy 2.png',
-    tech: ['NestJS', 'MongoDB', 'TypeScript'],
-    description: 'A RESTful API built with NestJS, MongoDB, and TypeScript.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Backend',
-    status: 'Completed',
-    featured: false,
-    year: '2024',
-  },
-  {
-    id: '10',
-    name: 'DATABASE',
-    image: '/img/fondo.jpg',
-    tech: ['MongoDB', 'MySQL', 'JavaScript', 'HTML'],
-    description: 'A comprehensive database solution using MongoDB and MySQL.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Backend',
-    status: 'Completed',
-    featured: false,
-    year: '2024',
-  },
-  {
-    id: '11',
-    name: 'APIS BACKEND',
-    image: '/img/images1.jpeg',
-    tech: ['MongoDB', 'PostgreSQL', 'NestJS', 'TypeScript', 'MySQL', 'Node.js'],
-    description: 'A collection of backend APIs using various technologies.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Backend',
-    status: 'Completed',
-    featured: false,
-    year: '2024',
-  },
-  {
-    id: '12',
-    name: 'Project In Development',
-    image: '/img/develoment.png',
-    tech: ['Next.js', 'TypeScript', 'TailwindCSS', 'MongoDB', 'NestJS'],
-    description: 'A collection of backend APIs using various technologies.',
-    websiteUrl: 'https://github.com/cristianManco?tab=repositories',
-    category: 'Full Stack',
-    status: 'In Progress',
-    featured: true,
-    year: '2025',
-  },
-  {
-    id: '13',
-    name: 'E-Commerce Platform',
-    image: '/placeholder.svg?height=300&width=400',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe'],
-    description: 'A full-stack e-commerce solution with user authentication, payment integration, and admin dashboard.',
-    websiteUrl: 'https://github.com/cristianManco',
-    liveUrl: 'https://demo-ecommerce.com',
-    category: 'Full Stack',
-    status: 'Completed',
-    featured: true,
-    year: '2024',
-  },
-  {
-    id: '14',
-    name: 'Task Management App',
-    image: '/placeholder.svg?height=300&width=400',
-    tech: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-    description: 'A collaborative task management app with real-time updates and team features.',
-    websiteUrl: 'https://github.com/cristianManco',
-    liveUrl: 'https://task-manager-demo.com',
-    category: 'Frontend',
-    status: 'Completed',
-    featured: false,
-    year: '2023',
-  },
-  {
-    id: '15',
-    name: 'Social Media API',
-    image: '/placeholder.svg?height=300&width=400',
-    tech: ['NestJS', 'PostgreSQL', 'JWT', 'WebSocket'],
-    description: 'RESTful API for a social media platform with messaging and auth.',
-    websiteUrl: 'https://github.com/cristianManco',
-    liveUrl: 'https://api-docs-demo.com',
-    category: 'Backend',
-    status: 'Completed',
-    featured: false,
-    year: '2024',
-  },
-  {
-    id: '16',
-    name: 'Mobile Banking App',
-    image: '/placeholder.svg?height=300&width=400',
-    tech: ['React Native', 'Node.js', 'MongoDB'],
-    description: 'Cross-platform banking app with biometrics and transactions.',
-    websiteUrl: 'https://github.com/cristianManco',
-    liveUrl: 'https://banking-app-demo.com',
-    category: 'Mobile',
-    status: 'In Progress',
-    featured: true,
-    year: '2024',
-  },
-];
+import { projects } from "./projects"
 
 
 const categories = ["All", "Frontend", "Backend", "Full Stack", "Mobile"]
@@ -258,7 +59,7 @@ export default function Portfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-20">
+    <div className="min-h-screen bg-slate-950 pt-10">
       {/* Hero Section */}
       <section className="py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20" />
@@ -272,7 +73,7 @@ export default function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600">
                 My Portfolio
               </span>

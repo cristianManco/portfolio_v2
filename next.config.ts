@@ -1,12 +1,20 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
+import withPWA from "next-pwa"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  // reactStrictMode: true,
   compiler: {
     styledComponents: true,
-    removeConsole: true,
+    removeConsole: process.env.NODE_ENV === "production",
   },
-};
+  experimental: {
+    serverActions:{ },
+  },
+}
 
-export default nextConfig;
+// ⚠️ Esto es lo correcto: pasa la opción `pwa` como argumento de `withPWA(...)`
+export default withPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+})(nextConfig)

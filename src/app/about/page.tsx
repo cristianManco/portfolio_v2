@@ -2,45 +2,14 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import {
-  FaGamepad,
-  FaHeadphones,
-  FaPlane,
-  FaCode,
-  FaHiking,
-  FaBook,
-  FaMotorcycle,
-  FaFilm,
   FaDownload,
-  FaMapMarkerAlt,
-  FaEnvelope,
-  FaPhone,
-  FaBirthdayCake,
-  FaBriefcase,
 } from "react-icons/fa"
-import ExperienceAndEducation from "../components/Experience"
-
-const interests = [
-  { name: "GAMES", icon: FaGamepad, color: "from-blue-500 to-cyan-500" },
-  { name: "MUSIC", icon: FaHeadphones, color: "from-purple-500 to-pink-500" },
-  { name: "TRAVEL", icon: FaPlane, color: "from-green-500 to-teal-500" },
-  { name: "DEVELOPMENT", icon: FaCode, color: "from-orange-500 to-red-500" },
-  { name: "SPORTS", icon: FaHiking, color: "from-emerald-500 to-green-500" },
-  { name: "BOOKS", icon: FaBook, color: "from-amber-500 to-yellow-500" },
-  { name: "MOTORCYCLES", icon: FaMotorcycle, color: "from-gray-500 to-slate-500" },
-  { name: "MOVIES", icon: FaFilm, color: "from-indigo-500 to-purple-500" },
-]
-
-const personalData = [
-  { label: "Birthday", value: "4-10-2005", icon: FaBirthdayCake },
-  { label: "Phone", value: "313-525-86-60", icon: FaPhone },
-  { label: "Email", value: "riwiaprender@gmail.com", icon: FaEnvelope },
-  { label: "Address", value: "CR 65 San Antonio prado, Medellín", icon: FaMapMarkerAlt },
-  { label: "Position", value: "Software Developer & Student", icon: FaBriefcase },
-]
+import ExperienceAndEducation from "./components/Experience"
+import { interests, personalData } from "./components/interests"
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-slate-950 pt-20">
+    <div className="min-h-screen bg-slate-950 pt-10">
       {/* Hero Section */}
       <section className="py-16 relative overflow-hidden">
         {/* Background Effects */}
@@ -55,7 +24,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600">
                 About Me
               </span>

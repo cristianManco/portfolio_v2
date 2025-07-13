@@ -42,14 +42,14 @@ const WhatsAppWidget: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 w-80 bg-white rounded-2xl shadow-2xl z-50 overflow-hidden"
+            className="fixed bottom-16 right-6 w-80 bg-white rounded-2xl shadow-2xl z-50 overflow-hidden"
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-green-500 to-green-600 p-4 text-white">
+            <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 text-white">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -111,7 +111,7 @@ const WhatsAppWidget: React.FC = () => {
       </AnimatePresence>
 
       {/* Main Button */}
-      <motion.div className="fixed bottom-6 right-6 z-50">
+      <motion.div className="fixed bottom-4 right-6 z-50">
         {/* Pulse Ring */}
         <motion.div
           className="absolute inset-0 bg-green-500 rounded-full"

@@ -34,8 +34,8 @@ const socialLinks = [
 ]
 
 const stats = [
-  { number: "3+", label: "Years Experience", icon: FaCode },
-  { number: "15+", label: "Projects Completed", icon: FaRocket },
+  { number: "2+", label: "Years Experience", icon: FaCode },
+  { number: "10+", label: "Projects Completed", icon: FaRocket },
   { number: "100%", label: "Client Satisfaction", icon: FaStar },
 ]
 
@@ -149,10 +149,10 @@ export default function Home() {
         </div>
 
         {/* Main Content */}
-        <motion.div className="relative z-10 text-center px-4 pt-[5rem]" style={{ y: y1 }}>
+        <motion.div className="relative z-10 text-center px-4 py-10" style={{ y: y1 }}>
           {/* Greeting */}
           <motion.div
-            className="mb-6"
+            className="mb-10 mt-12"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -165,7 +165,7 @@ export default function Home() {
 
           {/* Main Title */}
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -189,7 +189,7 @@ export default function Home() {
                 sequence={[
                   "Full Stack Developer",
                   2000,
-                  "UI/UX Designer",
+                  "UI/UX Expert",
                   2000,
                   "Problem Solver",
                   2000,
@@ -205,7 +205,7 @@ export default function Home() {
 
           {/* Description */}
           <motion.p
-            className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -333,7 +333,7 @@ export default function Home() {
       <Skills />
       <Portfolio />
       <Contact />
-      <WhatsAppWidget />
+      <WhatsAppWidget />  
     </>
   )
 }

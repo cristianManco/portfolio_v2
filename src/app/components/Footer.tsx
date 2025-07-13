@@ -46,7 +46,7 @@ export default function Footer() {
           {/* Botón scroll to top mejorado */}
           <motion.button
             onClick={scrollToTop}
-            className="group relative p-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300"
+            className="group relative p-4 mt-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300"
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,6 @@ export default function Footer() {
             <ArrowUp className="w-6 h-6 text-white group-hover:animate-bounce" />
             <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
           </motion.button>
-
           {/* Logo del footer */}
           <motion.div
             className="text-center"
@@ -64,7 +63,7 @@ export default function Footer() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="flex items-center justify-center space-x-2 mb-4">
+            <div className="flex items-center justify-center space-x-2 mb-3">
               <span className="text-gray-400 text-xl font-mono">{"<"}</span>
               <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
                 CRISDEV
@@ -72,7 +71,7 @@ export default function Footer() {
               <span className="text-gray-400 text-xl font-mono">{"/>"}</span>
             </div>
             <p className="text-gray-400 max-w-md mx-auto leading-relaxed">
-              Desarrollador Full Stack apasionado por crear experiencias digitales excepcionales
+              Full Stack Developer passionate about creating outstanding digital experiences
             </p>
           </motion.div>
 
@@ -127,13 +126,13 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <p className="text-gray-400 flex items-center justify-center space-x-2">
-              <span>Hecho con</span>
-              <Heart className="w-4 h-4 text-red-500 animate-pulse" />
-              <span>y</span>
-              <Code2 className="w-4 h-4 text-purple-400" />
+              <span>Made with</span>
+              <Heart className="w-6 h-6 text-red-500 animate-pulse" />
+              <span>&</span>
+              <Code2 className="w-6 h-6 text-purple-400" />
               <span>por Cristian Manco</span>
             </p>
-            <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} Todos los derechos reservados</p>
+            <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} All rights reserved</p>
           </motion.div>
         </div>
       </div>

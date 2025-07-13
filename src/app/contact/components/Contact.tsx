@@ -6,102 +6,17 @@ import { motion, AnimatePresence } from "framer-motion"
 import { toast, Toaster } from "react-hot-toast"
 import {
   FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaLinkedinIn,
-  FaGithub,
-  FaWhatsapp,
   FaPaperPlane,
   FaUser,
   FaEdit,
   FaCheckCircle,
-  FaExclamationCircle,
   FaClock,
-  FaGlobe,
 } from "react-icons/fa"
-
-interface FormData {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
-
-interface FormErrors {
-  name?: string
-  email?: string
-  subject?: string
-  message?: string
-}
-
-const contactInfo = [
-  {
-    icon: FaMapMarkerAlt,
-    title: "Location",
-    value: "CR 65C #38A SUR-44, San Antonio de Prado",
-    subValue: "Medellín, Antioquia, Colombia",
-    color: "from-red-500 to-pink-500",
-    href: "https://maps.google.com",
-  },
-  {
-    icon: FaPhone,
-    title: "Phone",
-    value: "+57 313 525 8660",
-    subValue: "Available 9AM - 6PM",
-    color: "from-green-500 to-emerald-500",
-    href: "tel:+573135258660",
-  },
-  {
-    icon: FaEnvelope,
-    title: "Email",
-    value: "camilomanco2005@gmail.com",
-    subValue: "Response within 24h",
-    color: "from-blue-500 to-cyan-500",
-    href: "mailto:camilomanco2005@gmail.com",
-  },
-  {
-    icon: FaGlobe,
-    title: "Website",
-    value: "cristdev.vercel.app",
-    subValue: "Portfolio & Blog",
-    color: "from-purple-500 to-pink-500",
-    href: "https://cristdev.vercel.app",
-  },
-]
-
-const socialLinks = [
-  {
-    icon: FaGithub,
-    name: "GitHub",
-    href: "https://github.com/cristianManco",
-    color: "hover:text-gray-300",
-    bgColor: "hover:bg-gray-700",
-  },
-  {
-    icon: FaLinkedinIn,
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/cristiandev18",
-    color: "hover:text-blue-400",
-    bgColor: "hover:bg-blue-600/20",
-  },
-  {
-    icon: FaWhatsapp,
-    name: "WhatsApp",
-    href: "https://wa.me/3135258660",
-    color: "hover:text-green-400",
-    bgColor: "hover:bg-green-600/20",
-  },
-  {
-    icon: FaEnvelope,
-    name: "Email",
-    href: "mailto:camilomanco2005@gmail.com",
-    color: "hover:text-red-400",
-    bgColor: "hover:bg-red-600/20",
-  },
-]
+import { contactInfo, FormDataEmail, FormErrors, socialLinks } from "./information"
+import InputField from "./InputField" // Importar el componente independiente
 
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataEmail>({
     name: "",
     email: "",
     subject: "",
@@ -116,7 +31,7 @@ export default function Contact() {
   const validateField = (name: string, value: string): string | undefined => {
     switch (name) {
       case "name":
-        return value.length < 2 ? "Name must be at least 2 characters" : undefined
+        return value.length < 10 ? "Name must be at least 10 characters" : undefined
       case "email":
         return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "Please enter a valid email" : undefined
       case "subject":
@@ -155,8 +70,21 @@ export default function Contact() {
     }
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      // Enviar a la API real
+      const response = await fetch('/api/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('Email sent successfully:', result)
 
       setIsSuccess(true)
       toast.success("Message sent successfully! I'll get back to you soon.", {
@@ -176,7 +104,8 @@ export default function Contact() {
       // Reset success state after animation
       setTimeout(() => setIsSuccess(false), 3000)
     } catch (error) {
-      toast.error("Failed to send message. Please try again."+ error, {
+      console.error('Error sending email:', error)
+      toast.error("Failed to send message. Please try again.", {
         icon: "❌",
         style: {
           borderRadius: "12px",
@@ -190,113 +119,16 @@ export default function Contact() {
     }
   }
 
-  const InputField = ({
-    name,
-    type = "text",
-    placeholder,
-    icon: Icon,
-    multiline = false,
-    rows = 1,
-  }: {
-    name: keyof FormData
-    type?: string
-    placeholder: string
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    icon: any
-    multiline?: boolean
-    rows?: number
-  }) => {
-    const hasError = errors[name]
-    const hasValue = formData[name].length > 0
-    const isFocused = focusedField === name
+  const handleFieldFocus = (fieldName: string) => {
+    setFocusedField(fieldName)
+  }
 
-    return (
-      <motion.div
-        className="relative group"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div
-          className={`relative bg-gray-900/50 backdrop-blur-sm rounded-2xl border-2 transition-all duration-300 ${hasError
-              ? "border-red-500/50"
-              : isFocused
-                ? "border-purple-500/50 shadow-lg shadow-purple-500/20"
-                : "border-gray-700/50 hover:border-gray-600/50"
-            }`}
-        >
-          <div className="flex items-start p-4">
-            <div
-              className={`flex-shrink-0 w-6 h-6 mt-1 transition-colors duration-300 ${hasError ? "text-red-400" : isFocused ? "text-purple-400" : "text-gray-400"
-                }`}
-            >
-              <Icon />
-            </div>
-            <div className="flex-1 ml-4">
-              <motion.label
-                className={`absolute transition-all duration-300 pointer-events-none ${isFocused || hasValue ? "text-xs -translate-y-2 text-purple-400" : "text-gray-400 translate-y-0"
-                  }`}
-                animate={{
-                  fontSize: isFocused || hasValue ? "0.75rem" : "1rem",
-                  y: isFocused || hasValue ? -8 : 0,
-                }}
-              >
-                {placeholder}
-              </motion.label>
-              {multiline ? (
-                <textarea
-                  name={name}
-                  value={formData[name]}
-                  onChange={handleChange}
-                  onFocus={() => setFocusedField(name)}
-                  onBlur={() => setFocusedField(null)}
-                  rows={rows}
-                  className="w-full bg-transparent text-white placeholder-transparent resize-none focus:outline-none mt-2"
-                  required
-                />
-              ) : (
-                <input
-                  type={type}
-                  name={name}
-                  value={formData[name]}
-                  onChange={handleChange}
-                  onFocus={() => setFocusedField(name)}
-                  onBlur={() => setFocusedField(null)}
-                  className="w-full bg-transparent text-white placeholder-transparent focus:outline-none mt-2"
-                  required
-                />
-              )}
-            </div>
-            {hasValue && !hasError && (
-              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="flex-shrink-0 text-green-400 ml-2">
-                <FaCheckCircle className="w-4 h-4" />
-              </motion.div>
-            )}
-            {hasError && (
-              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="flex-shrink-0 text-red-400 ml-2">
-                <FaExclamationCircle className="w-4 h-4" />
-              </motion.div>
-            )}
-          </div>
-        </div>
-        <AnimatePresence>
-          {hasError && (
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="text-red-400 text-sm mt-2 ml-2"
-            >
-              {hasError}
-            </motion.p>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    )
+  const handleFieldBlur = () => {
+    setFocusedField(null)
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-20">
+    <div className="min-h-screen bg-slate-950 pt-10">
       <Toaster position="top-right" />
 
       {/* Background Effects */}
@@ -315,7 +147,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600">
                 Let&apos;s Work Together
               </span>
@@ -342,18 +174,65 @@ export default function Contact() {
                 </h2>
 
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                  <InputField name="name" placeholder="Your Name" icon={FaUser} />
-                  <InputField name="email" type="email" placeholder="Your Email" icon={FaEnvelope} />
-                  <InputField name="subject" placeholder="Subject" icon={FaEdit} />
-                  <InputField name="message" placeholder="Your Message" icon={FaEdit} multiline rows={5} />
+                  <InputField
+                    name="name"
+                    placeholder="Your Name"
+                    icon={FaUser}
+                    value={formData.name}
+                    onChange={handleChange}
+                    onFocus={() => handleFieldFocus("name")}
+                    onBlur={handleFieldBlur}
+                    error={errors.name}
+                    isFocused={focusedField === "name"}
+                  />
+                  
+                  <InputField
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    icon={FaEnvelope}
+                    value={formData.email}
+                    onChange={handleChange}
+                    onFocus={() => handleFieldFocus("email")}
+                    onBlur={handleFieldBlur}
+                    error={errors.email}
+                    isFocused={focusedField === "email"}
+                  />
+                  
+                  <InputField
+                    name="subject"
+                    placeholder="Subject"
+                    icon={FaEdit}
+                    value={formData.subject}
+                    onChange={handleChange}
+                    onFocus={() => handleFieldFocus("subject")}
+                    onBlur={handleFieldBlur}
+                    error={errors.subject}
+                    isFocused={focusedField === "subject"}
+                  />
+                  
+                  <InputField
+                    name="message"
+                    placeholder="Your Message"
+                    icon={FaEdit}
+                    multiline
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    onFocus={() => handleFieldFocus("message")}
+                    onBlur={handleFieldBlur}
+                    error={errors.message}
+                    isFocused={focusedField === "message"}
+                  />
 
                   <motion.button
                     type="submit"
                     disabled={isSubmitting || isSuccess}
-                    className={`group relative w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 ${isSuccess
+                    className={`group relative w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 ${
+                      isSuccess
                         ? "bg-green-600 text-white"
                         : "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:shadow-lg hover:shadow-purple-500/25"
-                      }`}
+                    }`}
                     whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   >
